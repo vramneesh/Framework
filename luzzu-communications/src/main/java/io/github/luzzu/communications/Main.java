@@ -8,6 +8,7 @@ import javax.json.stream.JsonGenerator;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.StaticHttpHandler;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +33,7 @@ public class Main {
 
     public static HttpServer startServer() {
         final ResourceConfig rc = new ResourceConfig().packages("io.github.luzzu").property(JsonGenerator.PRETTY_PRINTING, true);
+        rc.register(MultiPartFeature.class);
        	HttpServer server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
        	server.getHttpHandler().setAllowEncodedSlash(true);
        	server.getServerConfiguration().addHttpHandler(new StaticHttpHandler("src/main/webapp"), "/");

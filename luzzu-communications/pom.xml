@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -21,15 +22,16 @@
 			<version>${luzzu.version}</version>
 		</dependency>
 		<dependency>
-  			<groupId>io.github.luzzu</groupId>
-  			<artifactId>luzzu-lowlevel-operations</artifactId>
-  			<version>${luzzu.version}</version>
-  		</dependency>
-  		
-  		
-  		<!-- Dependencies required by the metric implementations but not yet available in the repos (aether can't find them) -->
+			<groupId>io.github.luzzu</groupId>
+			<artifactId>luzzu-lowlevel-operations</artifactId>
+			<version>${luzzu.version}</version>
+		</dependency>
 
-        <!-- .Dependencies required by the metric implementations -->
+
+		<!-- Dependencies required by the metric implementations but not yet available 
+			in the repos (aether can't find them) -->
+
+		<!-- .Dependencies required by the metric implementations -->
 		<!-- REST services (Jersey) -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -41,27 +43,33 @@
 			<artifactId>jersey-media-json-processing</artifactId>
 			<version>${jerseymedia.version}</version>
 		</dependency>
-		
+
+		<!-- For dataset import -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-multipart</artifactId>
+			<version>${jerseymedia.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-common</artifactId>
+			<version>${jerseymedia.version}</version>
+		</dependency>
+
+
 		<!-- Apache HTTP Client -->
-<!--          <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.1.1</version>
-        </dependency>
-        <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpmime</artifactId>
-                <version>4.1.1</version>
-        </dependency>  -->
-        
-        <dependency>
-        		<groupId>io.github.luzzu</groupId>
-        		<artifactId>luzzu-webapp</artifactId>
-        		<version>${luzzu.version}</version>
-        </dependency>
-                
+		<!-- <dependency> <groupId>org.apache.httpcomponents</groupId> <artifactId>httpclient</artifactId> 
+			<version>4.1.1</version> </dependency> <dependency> <groupId>org.apache.httpcomponents</groupId> 
+			<artifactId>httpmime</artifactId> <version>4.1.1</version> </dependency> -->
+
+		<dependency>
+			<groupId>io.github.luzzu</groupId>
+			<artifactId>luzzu-webapp</artifactId>
+			<version>${luzzu.version}</version>
+		</dependency>
+
 	</dependencies>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -118,7 +126,8 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!-- Added assembly plugin, capable of generating self-contained jar files -->
+				<!-- Added assembly plugin, capable of generating self-contained jar 
+					files -->
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>2.5</version>
