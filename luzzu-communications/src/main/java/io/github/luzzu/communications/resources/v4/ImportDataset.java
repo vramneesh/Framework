@@ -60,7 +60,7 @@ public class ImportDataset {
 		if (lastIndexPos > 0) {
 			extension = fileName.substring(lastIndexPos+1);
 			fileName = fileName.substring(0, lastIndexPos)+"_"+Long.toString(timeStamp);
-			
+			fileName = fileName.replaceAll("\\s+","");
 		}
 		String importDatasetDir = System.getProperty("user.dir") + "/dataset";
 		importDatasetDir=importDatasetDir.replace('\\', '/');
